@@ -14,3 +14,11 @@ test('sort by args', () => {
     { key: 'health', value: 10 }, // порядок по алфавиту (т.к. в массиве с ключами нет значения "health")
   ]);
 });
+
+test('hasOwnProp test', () => {
+  const objWithInheritedProps = Object.create({ inheritedProp: 'test' });
+  objWithInheritedProps.ownProp = 'test';
+
+  const result = orderByProps(objWithInheritedProps, ['ownProp']);
+  expect(result).toEqual([{ key: 'ownProp', value: 'test' }]);
+});
